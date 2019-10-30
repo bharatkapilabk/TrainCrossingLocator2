@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".RegWithMob">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="120dp"
+            android:src="@drawable/train"
+            >
+        </ImageView>
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:id="@+id/edt_phn"
+            android:hint="Enter Phone Number"
+            android:textAlignment="center"
+            android:background="@drawable/shape"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:hint="Enter OTP"
+            android:textAlignment="center"
+            android:id="@+id/edt_otp"
+            android:background="@drawable/shape"
+            android:layout_marginTop="10dp"
+            android:inputType="numberPassword"
+            >
+        </EditText>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generate OTP"
+            android:id="@+id/btn_generate"
+            android:background="@drawable/shape"
+            android:layout_marginTop="10dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_verify"
+            android:text="Verify"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape"
+            >
+        </Button>
+    </LinearLayout>
+</LinearLayout>

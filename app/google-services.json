@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "289167348475",
+    "firebase_url": "https://train-crossing-locator.firebaseio.com",
+    "project_id": "train-crossing-locator",
+    "storage_bucket": "train-crossing-locator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289167348475:android:9742c77733353e9895965e",
+        "android_client_info": {
+          "package_name": "com.example.traincrossinglocator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289167348475-g2oee7c4fbbc9rdprusaj46b6iao8k9a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.traincrossinglocator",
+            "certificate_hash": "30c1c09a9785226b218691d9e577ed23cd338bcb"
+          }
+        },
+        {
+          "client_id": "289167348475-et2gij50ednqa5s4i5mhl1ml2bcq7vqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmWP-JyhsPTGr7O61psBgPKGaz6EZQcE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289167348475-et2gij50ednqa5s4i5mhl1ml2bcq7vqg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
