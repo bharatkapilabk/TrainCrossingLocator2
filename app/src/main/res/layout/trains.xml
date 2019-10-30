@@ -85,6 +85,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         cardView:cardCornerRadius="30dp"
+        android:id="@+id/c2"
         app:cardElevation="5dp"
         app:cardBackgroundColor="#d3d3d3"
         >
@@ -158,6 +159,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         cardView:cardCornerRadius="30dp"
+        android:id="@+id/c3"
         app:cardElevation="5dp"
         app:cardBackgroundColor="#d3d3d3"
 

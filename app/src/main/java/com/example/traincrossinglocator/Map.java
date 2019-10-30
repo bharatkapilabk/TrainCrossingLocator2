@@ -74,26 +74,27 @@ public class Map extends AppCompatActivity {
                 gmap = googleMap;
                 if(flag)
                 {
+
                     LatLng latlng1=new LatLng(31.342205,75.576007);
-                    LatLng latlng2=new LatLng(31.3380797,75.5816489);
-                    LatLng latlng3=new LatLng(31.3393936,75.5797917);
+                    /*LatLng latlng2=new LatLng(31.3380797,75.5816489);
+                    LatLng latlng3=new LatLng(31.3393936,75.5797917);*/
                     LatLng mylatlng = new LatLng(dlatitude,dlongitude);
                     gmap.moveCamera(CameraUpdateFactory.newLatLng(mylatlng));
                     gmap.setMyLocationEnabled(true);;
 
                     MarkerOptions markerOptions = new MarkerOptions();
                     MarkerOptions markerOptions1 = new MarkerOptions();
-                    MarkerOptions markerOptions2 = new MarkerOptions();
-                    MarkerOptions markerOptions3 = new MarkerOptions();
+                    /*MarkerOptions markerOptions2 = new MarkerOptions();
+                    MarkerOptions markerOptions3 = new MarkerOptions();*/
                     markerOptions.position(mylatlng);
                     markerOptions.title("You are here");
                     gmap.addMarker(markerOptions);
                     markerOptions1.position(latlng1);
                     gmap.addMarker(markerOptions1);
-                    markerOptions2.position(latlng2);
+                    /*markerOptions2.position(latlng2);
                     gmap.addMarker(markerOptions2);
                     markerOptions3.position(latlng3);
-                    gmap.addMarker(markerOptions3);
+                    gmap.addMarker(markerOptions3);*/
                 }
             }
         });

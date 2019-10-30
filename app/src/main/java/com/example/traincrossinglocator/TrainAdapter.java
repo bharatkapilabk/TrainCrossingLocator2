@@ -28,12 +28,32 @@ public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TrainAdapter.MyViewHolder myViewHolder, int i) {
+        final String latlng1="31.342205,75.576007";
 myViewHolder.c1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         Context context=view.getContext();
         Intent intent=new Intent(context,Map.class);
+        intent.putExtra(latlng1,1);
         context.startActivity(intent);
+    }
+});
+myViewHolder.c2.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(context,Map.class);
+        intent.putExtra(latlng1,1);
+        context.startActivity(intent);
+
+    }
+});
+myViewHolder.c3.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(context,Map.class);
+        intent.putExtra(latlng1,1);
+        context.startActivity(intent);
+
     }
 });
     }
@@ -45,7 +65,7 @@ myViewHolder.c1.setOnClickListener(new View.OnClickListener() {
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView i1,i2,i3,i4,i5,i6;
         TextView t1,t2,t3;
-        CardView c1;
+        CardView c1,c2,c3;
 
         MyViewHolder(final View itemView) {
             super(itemView);
@@ -59,6 +79,8 @@ myViewHolder.c1.setOnClickListener(new View.OnClickListener() {
             t2=  itemView.findViewById(R.id.t2);
             t3=  itemView.findViewById(R.id.t3);
             c1=  itemView.findViewById(R.id.c1);
+            c2=  itemView.findViewById(R.id.c2);
+            c3=  itemView.findViewById(R.id.c3);
         }
     }
 }
