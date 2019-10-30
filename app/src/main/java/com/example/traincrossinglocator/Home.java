@@ -20,30 +20,6 @@ LinearLayoutManager l1;
         r1.setLayoutManager(l1);
         TrainAdapter trainAdapter=new TrainAdapter(this);
         r1.setAdapter(trainAdapter);
-
-        /*r1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });*/
-        r1.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
-                Intent intent=new Intent(Home.this,Map.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean b) {
-
-            }
-        });
             }
 
     @Override

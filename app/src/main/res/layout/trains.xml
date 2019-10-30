@@ -15,6 +15,7 @@
     cardView:cardCornerRadius="30dp"
     app:cardElevation="5dp"
     app:cardBackgroundColor="#d3d3d3"
+    android:id="@+id/c1"
     >
     <LinearLayout
         android:layout_width="match_parent"
