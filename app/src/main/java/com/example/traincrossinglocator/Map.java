@@ -1,7 +1,7 @@
 package com.example.traincrossinglocator;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -24,6 +24,7 @@ public class Map extends AppCompatActivity {
     FusedLocationProviderClient myclient;
     Location lastLocation;
     double dlatitude, dlongitude;
+    LatLng latlng1;
     SupportMapFragment supportMapFragment;
     GoogleMap gmap;
     boolean flag = false;
@@ -35,6 +36,11 @@ public class Map extends AppCompatActivity {
         supportMapFragment = (SupportMapFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         myclient = LocationServices.getFusedLocationProviderClient(this);
+        Intent intent=getIntent();
+        Bundle bundle=intent.getExtras();
+        if(bundle!=null){
+            latlng1= (LatLng) bundle.get("latlong");
+        }
         checkLocationPermission();
     }
     private void checkLocationPermission()
@@ -75,7 +81,7 @@ public class Map extends AppCompatActivity {
                 if(flag)
                 {
 
-                    LatLng latlng1=new LatLng(31.342205,75.576007);
+                    //LatLng latlng1=new LatLng(31.342205,75.576007);
                     /*LatLng latlng2=new LatLng(31.3380797,75.5816489);
                     LatLng latlng3=new LatLng(31.3393936,75.5797917);*/
                     LatLng mylatlng = new LatLng(dlatitude,dlongitude);
