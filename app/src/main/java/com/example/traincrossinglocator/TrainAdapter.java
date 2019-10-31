@@ -16,7 +16,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.MyViewHolder> {
     Context context;
-    DataModel dataModel;
 
     public TrainAdapter(Context context) {
         this.context = context;
