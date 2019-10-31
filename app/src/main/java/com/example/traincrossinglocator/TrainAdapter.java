@@ -82,7 +82,6 @@ myViewHolder.c3.setOnClickListener(new View.OnClickListener() {
             i5 = itemView.findViewById(R.id.i5);
             i6 = itemView.findViewById(R.id.i6);
             t1=  itemView.findViewById(R.id.t1);
-            t1.setText(dataModel.Status);
             t2=  itemView.findViewById(R.id.t2);
             t3=  itemView.findViewById(R.id.t3);
             c1=  itemView.findViewById(R.id.c1);
