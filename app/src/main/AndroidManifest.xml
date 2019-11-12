@@ -17,18 +17,20 @@
         <activity android:name=".RegWithMob" />
         <activity android:name=".RegWithGoogle" />
         <activity android:name=".LogIn" />
-        <activity android:name=".LoginOrCreate" />
+        <activity android:name=".LoginOrCreate">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SignUp"
             android:parentActivityName=".LoginOrCreate" />
         <activity
             android:name=".Home"
             android:parentActivityName=".Home">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".splash" />
 

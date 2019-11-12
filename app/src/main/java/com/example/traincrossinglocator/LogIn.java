@@ -16,10 +16,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Pattern;
+
 public class LogIn extends AppCompatActivity {
 Button btn_login;
 EditText edt_mail,edt_password;
 FirebaseAuth mAuth;
+    public static final Pattern EMAIL_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+    );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +53,12 @@ FirebaseAuth mAuth;
                 }
             }
         });
+
+    }
+
+    public static boolean isValidEmail(CharSequence email)
+    {
+        return email != null && EMAIL_PATTERN.matcher(email).matches();
     }
     private void login_user(String email, String password) {
 

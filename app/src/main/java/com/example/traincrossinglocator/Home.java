@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 RecyclerView r1;
 LinearLayoutManager l1;
 TextView textView;
@@ -107,5 +108,22 @@ nav.setOnClickListener(new View.OnClickListener() {
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.viewtrains){
+            Toast.makeText(Home.this,"View Trains", Toast.LENGTH_LONG).show();
+        }
+else if(id==R.id.viewcrossings){
+            Toast.makeText(Home.this,"View Crossings", Toast.LENGTH_LONG).show();
+        }
+else if(id==R.id.feedback){
+            Toast.makeText(Home.this,"Feedback", Toast.LENGTH_LONG).show();
+        }
+else if(id==R.id.shareapp){
+            Toast.makeText(Home.this,"Share App", Toast.LENGTH_LONG).show();
+        }
+return true;
+    }
 }
 
