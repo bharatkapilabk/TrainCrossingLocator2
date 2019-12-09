@@ -2,21 +2,24 @@ package com.example.traincrossinglocator;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,22 +66,23 @@ DrawerLayout drawer_layout;
         calendar=Calendar.getInstance();
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
         String timeUntilClose=simpleDateFormat.format(calendar.getTime());
+        Log.d("TEST1",timeUntilClose);
         Toast.makeText(this, timeUntilClose, Toast.LENGTH_SHORT).show();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String status=dataSnapshot.getValue(String.class);
-
-                textView = r1.findViewById(R.id.t1);
-                textView.setText(status);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//      //  databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                String status=dataSnapshot.getValue(String.class);
+//
+//                textView = r1.findViewById(R.id.t1);
+//                textView.setText(status);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
 nav.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -99,6 +103,8 @@ nav.setOnClickListener(new View.OnClickListener() {
     }
 });
 
+navigation_view.setNavigationItemSelectedListener(this);
+
             }
 
     @Override
@@ -112,18 +118,39 @@ nav.setOnClickListener(new View.OnClickListener() {
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
         if(id==R.id.viewtrains){
-            Toast.makeText(Home.this,"View Trains", Toast.LENGTH_LONG).show();
+            Intent intent=new Intent(Home.this,ViewTrains.class);
+            startActivity(intent);
         }
 else if(id==R.id.viewcrossings){
             Toast.makeText(Home.this,"View Crossings", Toast.LENGTH_LONG).show();
         }
-else if(id==R.id.feedback){
-            Toast.makeText(Home.this,"Feedback", Toast.LENGTH_LONG).show();
+        else if(id==R.id.feedback){
+            Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.surveymonkey.com/r/3DCJKN9"));
+            startActivity(browserIntent);
         }
-else if(id==R.id.shareapp){
-            Toast.makeText(Home.this,"Share App", Toast.LENGTH_LONG).show();
+        else if(id==R.id.shareapp){
+            try {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+                String shareMessage= "\nLet me recommend you this application\n\n";
+                shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                startActivity(Intent.createChooser(shareIntent, "choose one"));
+            } catch(Exception e) {
+                //e.toString();
+            }
+        }
+        else if(id==R.id.logout){
+            FirebaseAuth.getInstance().signOut();
+            sendToLogin();
         }
 return true;
+    }
+    private void sendToLogin() {
+        Intent loginIntent = new Intent(Home.this, LoginOrCreate.class);
+        startActivity(loginIntent);
+        finish();
     }
 }
 

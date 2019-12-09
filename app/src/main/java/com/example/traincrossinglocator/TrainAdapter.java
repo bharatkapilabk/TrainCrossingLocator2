@@ -2,15 +2,14 @@ package com.example.traincrossinglocator;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -77,9 +76,9 @@ myViewHolder.c3.setOnClickListener(new View.OnClickListener() {
             super(itemView);
             i1 = itemView.findViewById(R.id.i1);
             i2 = itemView.findViewById(R.id.i2);
-            i3 = itemView.findViewById(R.id.i3);
+            //i3 = itemView.findViewById(R.id.i3);
             i4 = itemView.findViewById(R.id.i4);
-            i5 = itemView.findViewById(R.id.i5);
+//            i5 = itemView.findViewById(R.id.i5);
             i6 = itemView.findViewById(R.id.i6);
             t1=  itemView.findViewById(R.id.t1);
             t2=  itemView.findViewById(R.id.t2);
