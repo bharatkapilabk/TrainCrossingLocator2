@@ -201,25 +201,6 @@ String time;
         navigation_view.setNavigationItemSelectedListener(this);
 
 
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
-
-        calendar= Calendar.getInstance();
-
-        try {
-            Date d1=simpleDateFormat.parse("23:45");
-            Log.d("FireDebug",""+d1.getTime());
-            Date d2=simpleDateFormat.parse(simpleDateFormat.format(calendar.getTime()));
-            Log.d("FireDebug",""+d2.getTime());
-            diff=d1.getTime()-d2.getTime();
-            Log.d("FireDebug",""+diff);
-            Toast.makeText(this, ""+diff/1000, Toast.LENGTH_SHORT).show();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        myCountDownTimer=new NewHome.MyCountDownTimer(diff,1000);
-        myCountDownTimer.start();
-
     }
 
     public class MyCountDownTimer extends CountDownTimer {
