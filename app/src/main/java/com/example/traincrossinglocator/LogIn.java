@@ -55,7 +55,6 @@ ProgressBar p1;
                         if(task.isSuccessful()){
                             Toast.makeText(LogIn.this, "Check email to reset your password!", Toast.LENGTH_SHORT).show();
                         }else{
-
                             Toast.makeText(LogIn.this, "Failed to send mail", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -93,7 +92,7 @@ ProgressBar p1;
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Log.d("FLog", "signInWithEmail:success"+user);
-                            Intent intent=new Intent(LogIn.this,Home.class);
+                            Intent intent=new Intent(LogIn.this,NewHome.class);
                             startActivity(intent);
                             finish();
                         } else {

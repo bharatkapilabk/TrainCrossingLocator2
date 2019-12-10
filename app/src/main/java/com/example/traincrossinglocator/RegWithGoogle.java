@@ -15,10 +15,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegWithGoogle extends AppCompatActivity {
 Button btn_signup;
-EditText edt_mail,edt_password;
+EditText edt_mail,edt_password,edt_name;
 FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ FirebaseAuth mAuth;
         edt_mail=findViewById(R.id.edt_mail);
         edt_password=findViewById(R.id.edt_password);
         mAuth=FirebaseAuth.getInstance();
+        edt_name=findViewById(R.id.edt_name);
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +55,8 @@ FirebaseAuth mAuth;
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("FLog", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent=new Intent(RegWithGoogle.this,Home.class);
+                            UserProfileChangeRequest profileChangeRequest=new UserProfileChangeRequest.Builder().setDisplayName(edt_name.getText().toString()).build();
+                            Intent intent=new Intent(RegWithGoogle.this,NewHome.class);
                             startActivity(intent);
                             finish();
                         } else {

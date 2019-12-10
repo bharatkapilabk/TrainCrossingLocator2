@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
-                    android:text="Tanda Road"
+                    android:text="Hoshiarpur Road"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="15dp"
                     >
@@ -160,7 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
-                    android:text="Hoshiarpur Road"
+                    android:text="Tanda Road"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="15dp"
                     >
