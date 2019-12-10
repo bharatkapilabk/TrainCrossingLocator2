@@ -20,13 +20,15 @@ Button btn_login,btn_signup;
             public void onClick(View view) {
                 Intent intent=new Intent(LoginOrCreate.this,LogIn.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(LoginOrCreate.this,SignUp.class);
+                Intent intent=new Intent(LoginOrCreate.this,RegWithGoogle.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

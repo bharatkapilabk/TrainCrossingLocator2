@@ -1,12 +1,15 @@
 package com.example.traincrossinglocator;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,6 +49,7 @@ public class RegWithMob extends AppCompatActivity {
             @Override
             public void onVerificationFailed(FirebaseException e) {
                 Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_LONG).show();
+                Log.d("Fail", "Fail");
             }
 
             @Override
@@ -80,7 +84,7 @@ public class RegWithMob extends AppCompatActivity {
             edt_phn.requestFocus();
         }
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNumber,
+                "+91" + phoneNumber,
                 60,
                 TimeUnit.SECONDS,
                 this,
@@ -88,9 +92,9 @@ public class RegWithMob extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"Getting code",Toast.LENGTH_LONG).show();
     }
     private void verifySignInCode() {
-            String code=edt_otp.getText().toString();
-            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSent, code);
-            signInWithPhoneAuthCredential(credential);
+        String code=edt_otp.getText().toString();
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSent, code);
+        signInWithPhoneAuthCredential(credential);
     }
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         firebaseAuth.signInWithCredential(credential)

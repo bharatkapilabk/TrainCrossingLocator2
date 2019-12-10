@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,11 +37,22 @@ TextView textView;
 Calendar calendar;
 TrainData trainData;
 NavigationView navigation_view;
+TextView usr_email;
 ImageView nav;
-DrawerLayout drawer_layout;
-    ActionBarDrawerToggle mDrawerToggle;
+FirebaseAuth mAuth;
 
-    FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser firebaseUser=mAuth.getCurrentUser();
+        if(firebaseUser==null){
+            sendToLogin();
+        }
+    }
+
+    DrawerLayout drawer_layout;
+ActionBarDrawerToggle mDrawerToggle;
+FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference databaseReference=firebaseDatabase.getReference("Data").child("Status");
     DatabaseReference databaseReference1=firebaseDatabase.getReference("Data").child("Time");
 
@@ -52,7 +64,7 @@ DrawerLayout drawer_layout;
         trainData=new TrainData("closed","2:00");
 
         databaseReference1.setValue(trainData);
-
+        mAuth=FirebaseAuth.getInstance();
 
         r1=findViewById(R.id.r1);
         l1=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
@@ -69,6 +81,13 @@ DrawerLayout drawer_layout;
         Log.d("TEST1",timeUntilClose);
         Toast.makeText(this, timeUntilClose, Toast.LENGTH_SHORT).show();
 
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            View headerView = navigation_view.getHeaderView(0);
+            usr_email = headerView.findViewById(R.id.usr_email);
+            usr_email.setText(user.getEmail());
+        }
 //      //  databaseReference.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -147,6 +166,8 @@ else if(id==R.id.viewcrossings){
         }
 return true;
     }
+
+
     private void sendToLogin() {
         Intent loginIntent = new Intent(Home.this, LoginOrCreate.class);
         startActivity(loginIntent);

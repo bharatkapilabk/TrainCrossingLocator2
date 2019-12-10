@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +24,8 @@ public class LogIn extends AppCompatActivity {
 Button btn_login;
 EditText edt_mail,edt_password;
 FirebaseAuth mAuth;
+TextView resetpass;
+ProgressBar p1;
     public static final Pattern EMAIL_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                     "\\@" +
@@ -40,10 +44,29 @@ FirebaseAuth mAuth;
         edt_mail=findViewById(R.id.edt_mail);
         edt_password=findViewById(R.id.edt_password);
         mAuth= FirebaseAuth.getInstance();
+        p1=findViewById(R.id.p1);
+        resetpass=findViewById(R.id.resetpass);
+        resetpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.sendPasswordResetEmail(edt_mail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(LogIn.this, "Check email to reset your password!", Toast.LENGTH_SHORT).show();
+                        }else{
+
+                            Toast.makeText(LogIn.this, "Failed to send mail", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                p1.setVisibility(View.VISIBLE);
                 try {
                     String email=edt_mail.getText().toString();
                     String password=edt_password.getText().toString();
@@ -73,7 +96,6 @@ FirebaseAuth mAuth;
                             Intent intent=new Intent(LogIn.this,Home.class);
                             startActivity(intent);
                             finish();
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("FLog", "signInWithEmail:failure", task.getException());
@@ -84,4 +106,5 @@ FirebaseAuth mAuth;
                     }
                 });
     }
+
 }
